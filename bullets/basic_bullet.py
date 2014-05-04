@@ -1,13 +1,10 @@
-#Written by Ian Donovan
-#Bullet class
-
 import pygame
 from pygame.locals import *
 from helpers import *
-from Constants import *
 
 #Bullet class
-class Bullet(pygame.sprite.Sprite):
+class BasicBullet(pygame.sprite.Sprite):
+    Y_SPEED = -20
     #The constructor takes in a parent rect.
     #This will be the ship -- the bullet will spawn on the ship
     def __init__(self, parent):
