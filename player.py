@@ -15,5 +15,5 @@ class Player:
         self.ship = basic_ship.Battleship
         self.bullet = basic_bullet.BasicBullet
 
-    def level_up(self):
+    # def level_up(self):
         # do some things, increment

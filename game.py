@@ -2,8 +2,8 @@ import pygame
 import pygame.locals
 import player
 
-if not pygame.font: print "Warning! Fonts disabled!"
-if not pygame.mixer: print "Warning! Sounds disabled!"
+if not pygame.font: print("Warning! Fonts disabled!")
+if not pygame.mixer: print("Warning! Sounds disabled!")
 
 class BulletShip:
 
