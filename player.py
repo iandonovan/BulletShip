@@ -1,19 +1,16 @@
-import bullets.basic_bullet as basic_bullet
-import player_ships.basic_ship as basic_ship
+import bullets.bullet as bullet
+import player_ships.ship as ship
 
 class Player:
 
-    X_MOVE = 10
-    Y_MOVE = 10
+    STARTING_LEVEL = 1
     MAX_HEALTH = 100
 
     def __init__(self):
-        self.health = MAX_HEALTH
-        self.x_move = X_MOVE
-        self.y_move = Y_MOVE
-        self.level = 1
-        self.ship = basic_ship.Battleship
-        self.bullet = basic_bullet.BasicBullet
+        self.health = self.MAX_HEALTH
+        self.level = self.STARTING_LEVEL
+        self.ship = ship.Ship()
+        self.bullet = bullet.Bullet(self.ship.rect)
 
     # def level_up(self):
         # do some things, increment

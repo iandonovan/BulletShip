@@ -10,12 +10,12 @@ from pygame.locals import *
 #This function loads an image and adjusts its background
 def load_image(name, colorkey=None):
     #'data' is the folder in which the image is saved
-    fullname = os.path.join('data', name)
+    fullname = os.path.join('assets/sprites', name)
     try:
         image = pygame.image.load(fullname)
-    except pygame.error, message:
-        print 'Cannot load image:', name
-        raise SystemExit, message
+    except pygame.error:
+        print ('Cannot load image:', name)
+        raise SystemExit
     image = image.convert()
     if colorkey is not None:
         if colorkey is -1:
@@ -31,7 +31,7 @@ def load_sound(name):
     fullname = os.path.join('data', name)
     try:
         sound = pygame.mixer.Sound(fullname)
-    except pygame.error, message:
-        print 'Cannot load sound:', wav
-        raise SystemExit, message
+    except pygame.error:
+        print ('Cannot load sound:', wav)
+        raise SystemExit
     return sound

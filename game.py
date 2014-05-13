@@ -1,6 +1,7 @@
 import pygame
 import pygame.locals
 import player
+pygame.init()
 
 if not pygame.font: print("Warning! Fonts disabled!")
 if not pygame.mixer: print("Warning! Sounds disabled!")
@@ -11,13 +12,9 @@ class BulletShip:
     HEIGHT = 600
 
     def __init__(self):
-        # Initialize pygame
-        pygame.init()
-        self.width = WIDTH
-        self.height = HEIGHT
+        self.width = self.WIDTH
+        self.height = self.HEIGHT
         self.screen = pygame.display.set_mode((self.width, self.height))
-        set_background()
-        set_player()
         pygame.key.set_repeat(500, 250)
 
     def set_background(self):
@@ -29,7 +26,7 @@ class BulletShip:
 
     def set_player(self):
         self.player = player.Player()
-        self.player_sprites = pygame.sprite.RenderPlain(self.player)
+        self.player_sprites = pygame.sprite.RenderPlain(self.player.ship)
 
     # The game loop
     def gameLoop(self):
@@ -42,37 +39,39 @@ class BulletShip:
                     sys.exit()
                 # Check for keystrokes now
                 # Pushing a key down (left, right, etc.)
-                elif (event.type == KEYDOWN):
-                    if ((event.key == K_RIGHT)
-                    or (event.key == K_LEFT)
-                    or (event.key == K_UP)
-                    or (event.key == K_DOWN)
-                    or (event.key == K_TAB)
-                    or (event.key == K_LSHIFT)):
+                elif (event.type == pygame.KEYDOWN):
+                    if ((event.key == pygame.K_RIGHT)
+                    or (event.key == pygame.K_LEFT)
+                    or (event.key == pygame.K_UP)
+                    or (event.key == pygame.K_DOWN)
+                    or (event.key == pygame.K_TAB)
+                    or (event.key == pygame.K_LSHIFT)):
                     # The function to handle the press
                         self.player.keyDown(event.key)
                 # Letting a key up
-                elif (event.type == KEYUP):
-                    if ((event.key == K_RIGHT)
-                    or (event.key == K_LEFT)
-                    or (event.key == K_UP)
-                    or (event.key == K_DOWN)):
+                elif (event.type == pygame.KEYUP):
+                    if ((event.key == pygame.K_RIGHT)
+                    or (event.key == pygame.K_LEFT)
+                    or (event.key == pygame.K_UP)
+                    or (event.key == pygame.K_DOWN)):
                     # The function to handle the let-up
                         self.player.keyUp(event.key)
                         
             # Big update function -- mainly, move things around
-            self.player.update()
+            self.player.ship.update()
 
             # Draw the sprites
             self.screen.blit(self.background, (0,0))
             self.player_sprites.draw(self.screen)
             
             # If there are bullets, draw them, too.
-            if self.player.bullet_sprites.sprites():
-                self.player.bullet_sprites.draw(self.screen)
+            if self.player.ship.bullet_sprites.sprites():
+                self.player.ship.bullet_sprites.draw(self.screen)
             pygame.display.flip()
 
 if __name__ == "__main__":
 #Begin
     main_window = BulletShip()
+    main_window.set_background()
+    main_window.set_player()
     main_window.gameLoop()
