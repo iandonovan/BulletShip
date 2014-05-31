@@ -47,7 +47,7 @@ class BulletShip:
                     or (event.key == pygame.K_TAB)
                     or (event.key == pygame.K_LSHIFT)):
                     # The function to handle the press
-                        self.player.keyDown(event.key)
+                        self.player.ship.keyDown(event.key)
                 # Letting a key up
                 elif (event.type == pygame.KEYUP):
                     if ((event.key == pygame.K_RIGHT)
@@ -55,7 +55,7 @@ class BulletShip:
                     or (event.key == pygame.K_UP)
                     or (event.key == pygame.K_DOWN)):
                     # The function to handle the let-up
-                        self.player.keyUp(event.key)
+                        self.player.ship.keyUp(event.key)
                         
             # Big update function -- mainly, move things around
             self.player.ship.update()

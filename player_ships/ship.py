@@ -30,32 +30,32 @@ class Ship(pygame.sprite.Sprite):
 
     #A key is pressed down; get the move ready
     def keyDown(self, key):
-        if (key == K_RIGHT):
+        if (key == pygame.K_RIGHT):
             #Increment the xMove
             self.xMove += self.xMoveDist
-        elif (key == K_LEFT):
+        elif (key == pygame.K_LEFT):
             #Decrement to move left
             self.xMove -= self.xMoveDist
-        elif (key == K_DOWN):
+        elif (key == pygame.K_DOWN):
             #Increase yMove to move down
             self.yMove += self.yMoveDist
-        elif (key == K_UP):
+        elif (key == pygame.K_UP):
             #Decrement to move up
             self.yMove -= self.yMoveDist
-        elif (key == K_LSHIFT):
+        elif (key == pygame.K_LSHIFT):
             #Fire a bullet
             self.makeBullet()
 
     #Upon letting up on a button, stop moving
     def keyUp(self, key):
-        if (key == K_RIGHT or key == K_LEFT):
+        if (key == pygame.K_RIGHT or key == pygame.K_LEFT):
             self.xMove = 0
-        elif (key == K_DOWN or key == K_UP):
+        elif (key == pygame.K_DOWN or key == pygame.K_UP):
             self.yMove = 0
 
     #Make a bullet, assign it to the ship's ammo, add it to the sprite group
     def makeBullet(self):
-        self.bullet = Bullet(self.rect)
+        self.bullet = bullet.Bullet(self.rect)
         self.bullet_sprites.add(self.bullet)
 
     def update(self):
